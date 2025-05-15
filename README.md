@@ -1,4 +1,4 @@
-# Memory Game ( 🌐 version )
+# Memory Game ( Version française )
 
 🔗 Live Website: [Memory Game]()
 
