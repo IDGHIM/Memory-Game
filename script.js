@@ -1,3 +1,4 @@
+/*Génération de cartes*/
 document.addEventListener("DOMContentLoaded", () => {
   const cardContainer = document.getElementById("card-container");
 
@@ -26,9 +27,7 @@ document.addEventListener("DOMContentLoaded", () => {
   generateRandomCards();
 });
 
-//chrono
-
-
+/*CHRONOMETRE*/
 let chrono = document.getElementById("chrono");
 let resetBtn = document.getElementById("reset");
 let stopBtn = document.getElementById("stop");
