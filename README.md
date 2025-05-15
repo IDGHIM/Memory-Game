@@ -48,20 +48,20 @@ Le but de ce projet est de développer une application de jeu de mémoire (Memor
 
 ## 🖼️ Contexte du Projet
 
-Ce projet est réalisé en groupe de 2-3 personnes pour renforcer la collaboration et la gestion de projet.
-Utilisation de Git et GitHub pour la gestion du code
-Chaque membre doit contribuer par des commits réguliers
-Application mobile-first et responsive
-Utilisation de JavaScript vanilla uniquement (pas de frameworks)
+- Ce projet est réalisé en groupe de 2-3 personnes pour renforcer la collaboration et la gestion de projet.
+- Utilisation de Git et GitHub pour la gestion du code
+- Chaque membre doit contribuer par des commits réguliers
+- Application mobile-first et responsive
+- Utilisation de JavaScript vanilla uniquement (pas de frameworks)
 
 ---
 
 ## 📦 Structure du Projet
 
-index.html : Structure de base de l'application
-styles.css : Styles CSS pour un design responsive
-script.js : Logique JavaScript du jeu
-assets/ : Dossier contenant les images ou symboles des cartes
+- index.html : Structure de base de l'application
+- styles.css : Styles CSS pour un design responsive
+- script.js : Logique JavaScript du jeu
+- assets/ : Dossier contenant les images ou symboles des cartes
 
 ---
 
