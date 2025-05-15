@@ -73,3 +73,9 @@ body {
 input {
  width: 5rem;
 }
+
+/* Chrono */
+
+#div-chrono{
+  padding-right: 25px;
+}
