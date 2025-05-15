@@ -92,38 +92,24 @@ document.addEventListener("DOMContentLoaded", () => {
       card.className = "card";
       card.dataset.value = value;
 
-<<<<<<< HEAD
       card.innerHTML = `
         <div class='card-inner'>
           <div class='card-front'>?</div>
           <div class='card-back'>${value}</div>
         </div>`;
-=======
-      card.innerHTML = `<div class='card-inner'>
-                      <div class='card-front'>?</div>
-                      <div class='card-back'>${value}</div>
-                    </div>`;
->>>>>>> 8e05618e9004c32e7fa9571fa37e2fee81a5a32f
 
       // Empêcher de retourner 2 fois la même carte & empêcher de retourner 2 cartes ou plus
       card.addEventListener("click", function () {
-<<<<<<< HEAD
         if (estArrete) {
           demarrerChrono(); // Premier clic = démarrage chrono
         }
 
-=======
->>>>>>> 8e05618e9004c32e7fa9571fa37e2fee81a5a32f
         if (card.classList.contains("flipped") || flippedCards.length >= 2)
           return;
 
         card.classList.add("flipped");
         flippedCards.push(card);
 
-<<<<<<< HEAD
-=======
-        // Compteur de coups
->>>>>>> 8e05618e9004c32e7fa9571fa37e2fee81a5a32f
         if (flippedCards.length === 2) {
           movesCounter++;
           counterDisplay.textContent = movesCounter;
