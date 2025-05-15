@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="description" content="Cartes générées aléatoirement avec des paires."/>
+    <meta name="description" content="Cartes générées aléatoirement avec des paires." />
     <link rel="icon" type="image/png" href="image/favicon/favicon-96x96.png" sizes="96x96" />
     <link rel="icon" type="image/svg+xml" href="image/favicon/favicon.svg" />
     <link rel="shortcut icon" href="image/favicon/favicon.ico" />
@@ -13,15 +13,27 @@
     <link rel="stylesheet" href="styles.css" />
   </head>
   <body>
+    <!-- NAVIGATION -->
+    <header>
+      <nav id="navbar">
+        <ul>
+          <li><a class="nav-link" href="#">Accueil</a></li>
+          <li><a class="nav-link" href="#">Règles</a></li>
+          <li><a class="nav-link" href="#">Jeu</a></li>
+        </ul>
+      </nav>
+    </header>
+
     <div id="elements-div">
-        <div id="title-div">
-          <h1>Jeu de mémoire</h1>
-          <p>Tu dois retrouver les paires en retournant deux cartes à la fois !
-            Si les cartes correspondent, elles restent visibles.
-            Sinon, elles se retournent à nouveau.</p>
-          <p>Le jeu est chronométré et tu peux voir ton score et le nombre de coups.</p>
-          <p>Bonne chance !</p>
-        </div>
+      <div id="title-div">
+        <h1>Jeu de mémoire</h1>
+      </div>
+      <div id="description-div">
+        <p>Tu dois retrouver les paires en retournant deux cartes à la fois !</p>
+        <p>Si les cartes correspondent, elles restent visibles. Sinon, elles se retournent à nouveau.</p>
+        <p>Le jeu est chronométré et tu peux voir ton score et le nombre de coups.</p>
+        <p>Bonne chance !</p>
+      </div>
       <div id="chrono">00:00</div>
       <div id="buttons">
         <button id="reset" class="chrono-button">Reset</button>
@@ -33,6 +45,7 @@
         <div>Meilleur score : <span id="best-score">--</span></div>
       </div>
     </div>
-  <script src="script.js"></script>
-</body>
+
+    <script src="script.js"></script>
+  </body>
 </html>
