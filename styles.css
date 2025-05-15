@@ -1,3 +1,16 @@
+/* ================== IMPORTS & POLICES ================== */
+@import url('https://fonts.googleapis.com/css2?family=Raleway:wght@300;500;700&display=swap');
+
+/* ================== VARIABLES ================== */
+:root {
+  --rusty-red: #C0392B;
+  --dark-gray: #2C3E50;
+  --light-gray: #ECF0F1;
+  --white: #FFFFFF;
+  --black: #000000;
+}
+
+/* ================== STYLES GLOBAUX ================== */
 body {
   font-family: Arial, sans-serif;
   background-color: #f0f0f5;
@@ -8,6 +21,85 @@ body {
   margin: 0;
 }
 
+/* ================== STYLES DU TITLE ================== */
+.title-div {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.title-div h1 {
+  font-family: 'Raleway', sans-serif;
+  font-size: 3rem;
+  color: var(--rusty-red);
+  margin-bottom: 20px;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  animation: fadeSlide 1.2s ease-in-out both;
+}
+
+.title-div p {
+  font-size: 1.5rem;
+  color: var(--rusty-red);
+  margin-bottom: 40px;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  animation: fadeSlide 1.2s ease-in-out both;
+}
+
+/* Soulignement animé */
+h1::after {
+  content: '';
+  position: absolute;
+  width: 60px;
+  height: 4px;
+  bottom: -12px;
+  left: 50%;
+  transform: translateX(-50%);
+  border-radius: 2px;
+  animation: underlineGrow 1.2s ease forwards;
+}
+
+/* Animation de fade + slide */
+@keyframes fadeSlide {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Animation du soulignement */
+@keyframes underlineGrow {
+  from {
+    width: 0;
+    opacity: 0;
+  }
+  to {
+    width: 60px;
+    opacity: 1;
+  }
+}
+
+/* ================== STYLES DU JEU ================== */
+#game-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--light-gray);
+  border-radius: 10px;
+  padding: 20px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* ================== STYLES DES CARTES ================== */
 .grid {
   display: grid;
   grid-template-columns: repeat(4, 100px);
@@ -62,19 +154,34 @@ body {
   align-items: center;
 }
 
-#score-div {
-  margin-top: 1rem;
-  border: 3px solid #000;
-  padding: 1.5rem;
-  border-radius: 10px;
-  background: gray;
+/* ================== STYLES DU SCORE ================== */
+#score-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
 }
+#score-container p {
+  font-size: 1.5rem;
+  color: var(--dark-gray);
+} 
 
-input {
- width: 5rem;
+#score-container input {
+  width: 50px;
+  text-align: center;
+  font-size: 1.5rem;
+  border: 2px solid var(--dark-gray);
+  border-radius: 5px;
+  padding: 5px;
 }
-
-/* Chrono */
+/* ================== STYLES DU CHRONOMÈTRE ================== */
+#chrono {
+  font-size: 2rem;
+  color: var(--dark-gray);
+  margin-top: 20px;
+  text-align: center;
+  animation: fadeSlide 1.2s ease-in-out both;
+}
 
 #div-chrono{
   padding-right: 25px;
