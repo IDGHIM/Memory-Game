@@ -20,30 +20,42 @@ document.addEventListener("DOMContentLoaded", () => {
     values.forEach((value) => {
       const card = document.createElement("div");
       card.className = "card";
+      card.dataset.value = value;
 
-      // card.dataset.value = value; Stocker la valeur des cartes pour les comparer plus tard notamment pour incrémenter le score et pour retourner les cartes qui ne forment pas de paire
-
-      card.innerHTML = `<div class='card-inner'><div class='card-front'>?</div><div class='card-back'>${value}</div></div>`;
-
+      card.innerHTML = `<div class='card-inner'>
+                      <div class='card-front'>?</div>
+                      <div class='card-back'>${value}</div>
+                    </div>`;
+                    
+      // Empêcher de retourner 2 fois la même carte & empêcher de retourner 2 cartes ou plus
       card.addEventListener("click", function () {
-        
-// --------------- Modification pour éviter de pouvoir retourner une carte déjà retournée ou d'en retourner plus que 2 ---------------     
-        
         if (card.classList.contains("flipped") || flippedCards.length >= 2)
           return;
+
         card.classList.add("flipped");
         flippedCards.push(card);
 
-//-------------------------------------------------------------------------------------------------------------------------------------       
-
-
-//   Compteur de coups:
-           if (flippedCards.length === 2) {
+        // Compteur de coups
+        if (flippedCards.length === 2) {
           movesCounter++;
           counterDisplay.textContent = movesCounter;
 
+          const [firstCard, secondCard] = flippedCards;
+
+          if (firstCard.dataset.value === secondCard.dataset.value) {
+            // Bonne paire : laisser les cartes retournées
+            flippedCards = [];
+          } else {
+            // Mauvaise paire : retourner les cartes
+            setTimeout(() => {
+              firstCard.classList.remove("flipped");
+              secondCard.classList.remove("flipped");
+              flippedCards = [];
+            }, 1000);
+          }
         }
       });
+
       cardContainer.appendChild(card);
     });
   }
