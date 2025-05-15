@@ -1,24 +1,48 @@
 /*Génération de cartes*/
 document.addEventListener("DOMContentLoaded", () => {
   const cardContainer = document.getElementById("card-container");
+  const counterDisplay = document.getElementById("moves-counter");
+  let movesCounter = 0;
+  let flippedCards = [];
 
   function generateRandomCards() {
     const cards = [];
     const values = [];
 
-    for (let i = 0; i < 8; i++) { // 8 paires
+    for (let i = 0; i < 8; i++) {
+      // 8 paires
       const randomValue = Math.floor(Math.random() * 100);
       values.push(randomValue, randomValue);
     }
 
     values.sort(() => Math.random() - 0.5);
 
-    values.forEach(value => {
+    values.forEach((value) => {
       const card = document.createElement("div");
       card.className = "card";
+
+      // card.dataset.value = value; Stocker la valeur des cartes pour les comparer plus tard notamment pour incrémenter le score et pour retourner les cartes qui ne forment pas de paire
+
       card.innerHTML = `<div class='card-inner'><div class='card-front'>?</div><div class='card-back'>${value}</div></div>`;
-      card.addEventListener('click', function() {
-        card.classList.toggle('flipped');
+
+      card.addEventListener("click", function () {
+        
+// --------------- Modification pour éviter de pouvoir retourner une carte déjà retournée ou d'en retourner plus que 2 ---------------     
+        
+        if (card.classList.contains("flipped") || flippedCards.length >= 2)
+          return;
+        card.classList.add("flipped");
+        flippedCards.push(card);
+
+//-------------------------------------------------------------------------------------------------------------------------------------       
+
+
+//   Compteur de coups:
+           if (flippedCards.length === 2) {
+          movesCounter++;
+          counterDisplay.textContent = movesCounter;
+
+        }
       });
       cardContainer.appendChild(card);
     });
@@ -97,4 +121,3 @@ const reset = () => {
 startBtn.addEventListener("click", demarrer);
 stopBtn.addEventListener("click", arreter);
 resetBtn.addEventListener("click", reset);
-

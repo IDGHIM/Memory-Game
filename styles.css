@@ -157,9 +157,11 @@ h1::after {
 /* ================== STYLES DU SCORE ================== */
 #score-container {
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
   width: 100%;
+  gap: 3rem;
+  margin-top: 1rem;
 }
 #score-container p {
   font-size: 1.5rem;
