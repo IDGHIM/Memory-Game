@@ -28,3 +28,22 @@ body {
 .card:hover {
   transform: scale(1.05);
 }
+
+#elements-div {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+#score-div {
+  margin-top: 3rem;
+  border: 3px solid #000;
+  padding: 1.5rem;
+  border-radius: 10px;
+  background: gray;
+}
+
+input {
+ width: 5rem;
+}

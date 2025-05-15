@@ -1,5 +1,8 @@
 document.addEventListener("DOMContentLoaded", () => {
   const cardContainer = document.getElementById("card-container");
+  const scoreCounter = document.getElementById("score-counter");
+  const moveCounter = document.getElementById("move-counter");
+
 
   function generateRandomCards() {
     const cards = [];
