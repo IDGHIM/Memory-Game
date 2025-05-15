@@ -34,6 +34,7 @@ let resetBtn = document.getElementById("reset");
 let stopBtn = document.getElementById("stop");
 let startBtn = document.getElementById("start");
 
+let heures = 0;
 let minutes = 0;
 let secondes = 0;
 
@@ -60,7 +61,6 @@ const defilerTemps = () => {
 
   secondes = parseInt(secondes);
   minutes = parseInt(minutes);
-  heures = parseInt(heures);
 
   secondes++;
 
@@ -82,19 +82,14 @@ const defilerTemps = () => {
     minutes = "0" + minutes;
   }
 
-  if (heures < 10) {
-    heures = "0" + heures;
-  }
-
-  chrono.textContent = `${heures}:${minutes}:${secondes}`;
+  chrono.textContent = `${minutes}:${secondes}`;
 
   timeout = setTimeout(defilerTemps, 1000);
 };
 
 const reset = () => {
-  chrono.textContent = "00:00:00";
+  chrono.textContent = "00:00";
   estArrete = true;
-  heures = 0;
   minutes = 0;
   secondes = 0;
   clearTimeout(timeout);
