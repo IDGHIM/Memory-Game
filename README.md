@@ -1,6 +1,6 @@
 # Memory Game ( 🌐 version )
 
-🔗 Live Website: Lien vers le site en ligne
+🔗 Live Website: [Memory Game]()
 
 ✨ Ce projet est réalisé dans le cadre de la certification "Responsive Web Design" et "JavaScript Algorithms and Data Structures" de freeCodeCamp.
 
@@ -67,7 +67,7 @@ assets/ : Dossier contenant les images ou symboles des cartes
 
 ## 📫 Contact
 
-- GitHub: [@idghim](https://github.com/idghim) [@WarrickBe](https://github.com/WarrickBe) [Théo E](https://github.com/Snoobydoo)
+- GitHub: [@idghim](https://github.com/idghim) [@WarrickBe](https://github.com/WarrickBe) [@Théo E](https://github.com/Snoobydoo)
 
 ---
 
