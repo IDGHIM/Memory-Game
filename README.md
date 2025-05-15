@@ -1,6 +1,6 @@
 # Memory Game ( Version française )
 
-🔗 Live Website: [Memory Game]()
+🔗 Lien du site: [Memory Game]()
 
 ✨ Ce projet est réalisé dans le cadre de la certification "Responsive Web Design" et "JavaScript Algorithms and Data Structures" de freeCodeCamp.
 
