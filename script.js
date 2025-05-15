@@ -98,12 +98,12 @@ document.addEventListener("DOMContentLoaded", () => {
           <div class='card-back'>${value}</div>
         </div>`;
 
-      // Empêcher de retourner 2 fois la même carte & empêcher de retourner 2 cartes ou plus
       card.addEventListener("click", function () {
         if (estArrete) {
           demarrerChrono(); // Premier clic = démarrage chrono
         }
-
+        
+        // Empêcher de retourner 2 fois la même carte & empêcher de retourner 2 cartes ou plus
         if (card.classList.contains("flipped") || flippedCards.length >= 2)
           return;
 
