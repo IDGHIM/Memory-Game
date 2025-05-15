@@ -37,7 +37,7 @@ document.addEventListener("DOMContentLoaded", () => {
 //-------------------------------------------------------------------------------------------------------------------------------------       
 
 
-//   Compteur de coups:
+/* Compteur de coups: */
            if (flippedCards.length === 2) {
           movesCounter++;
           counterDisplay.textContent = movesCounter;
