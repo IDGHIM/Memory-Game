@@ -61,7 +61,7 @@ Le but de ce projet est de développer une application de jeu de mémoire (Memor
 - index.html : Structure de base de l'application
 - styles.css : Styles CSS pour un design responsive
 - script.js : Logique JavaScript du jeu
-- assets/ : Dossier contenant les images ou symboles des cartes
+- image/ : Dossier contenant les images ou symboles des cartes
 
 ---
 
