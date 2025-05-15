@@ -26,7 +26,7 @@ document.addEventListener("DOMContentLoaded", () => {
                       <div class='card-front'>?</div>
                       <div class='card-back'>${value}</div>
                     </div>`;
-                    
+
       // Empêcher de retourner 2 fois la même carte & empêcher de retourner 2 cartes ou plus
       card.addEventListener("click", function () {
         if (card.classList.contains("flipped") || flippedCards.length >= 2)
@@ -35,16 +35,8 @@ document.addEventListener("DOMContentLoaded", () => {
         card.classList.add("flipped");
         flippedCards.push(card);
 
-<<<<<<< HEAD
         // Compteur de coups
         if (flippedCards.length === 2) {
-=======
-//-------------------------------------------------------------------------------------------------------------------------------------       
-
-
-/* Compteur de coups: */
-           if (flippedCards.length === 2) {
->>>>>>> 2073f000f3832475188966a1d340a70435719a9b
           movesCounter++;
           counterDisplay.textContent = movesCounter;
 
