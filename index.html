@@ -11,7 +11,14 @@
     <link rel="stylesheet" href="styles.css" />
   </head>
   <body>
+
     <div id="elements-div">
+      <div id="chrono">00:00</div>
+      <div id="buttons">
+        <button id="reset" class="chrono-button">Reset</button>
+        <button id="stop" class="chrono-button">Arrêter</button>
+        <button id="start" class="chrono-button">Démarrer</button>
+      </div>
       <div id="card-container" class="grid"></div>
       <div id="score-div">
         <label for="score-counter">Score&nbsp;:</label>
@@ -20,16 +27,6 @@
         <input id="move-counter" type="number" />
       </div>
     </div>
-
-    <div id="wrapper">
-      <div id="chrono">00:00</div>
-      <div id="buttons">
-        <button id="reset" class="button">Reset</button>
-        <button id="stop" class="button">Arrêter</button>
-        <button id="start" class="button">Démarrer</button>
-      </div>
-    </div>
-
   <script src="script.js"></script>
 </body>
 </html>
