@@ -17,9 +17,9 @@
     <header>
       <nav id="navbar">
         <ul>
-          <li><a class="nav-link" href="#">Accueil</a></li>
-          <li><a class="nav-link" href="#">Règles</a></li>
-          <li><a class="nav-link" href="#">Jeu</a></li>
+          <li><a class="nav-link" href="#title-div">Accueil</a></li>
+          <li><a class="nav-link" href="#description-div">Règles</a></li>
+          <li><a class="nav-link" href="#game-div">Jeu</a></li>
         </ul>
       </nav>
     </header>
@@ -34,17 +34,19 @@
         <p>Le jeu est chronométré et tu peux voir ton score et le nombre de coups.</p>
         <p>Bonne chance !</p>
       </div>
-      <div id="chrono">00:00</div>
-      <div id="buttons">
-        <button id="reset" class="chrono-button">Reset</button>
+      <div id="game-div">
+        <div id="chrono">00:00</div>
+        <div id="buttons">
+          <button id="reset" class="chrono-button">Reset</button>
+        </div>
+        <div id="card-container" class="grid"></div>
+        <div id="score-container">
+          <div>Score : <span id="score-counter">0</span></div>
+          <div>Coups : <span id="moves-counter">0</span></div>
+          <div>Meilleur score : <span id="best-score">--</span></div>
+        </div>
+            </div>
       </div>
-      <div id="card-container" class="grid"></div>
-      <div id="score-container">
-        <div>Score : <span id="score-counter">0</span></div>
-        <div>Coups : <span id="moves-counter">0</span></div>
-        <div>Meilleur score : <span id="best-score">--</span></div>
-      </div>
-    </div>
     <footer> 
       <div id="footer-content">
         <p>Jeu de mémoire - 2025</p>
