@@ -18,7 +18,6 @@ function playSound(sound) {
   clone.play();
 }
 
-
 // Variables de jeu
   let movesCounter = 0;   // Compteur de coups
   let flippedCards = [];  // Cartes retournées
@@ -34,7 +33,9 @@ function playSound(sound) {
 
 // Affichage du meilleur score
   let bestScore = localStorage.getItem("bestScore");
-  bestScoreDisplay.textContent = bestScore ? bestScore : "--";
+  bestScore = bestScore ? parseInt(bestScore) : 0;
+  bestScoreDisplay.textContent = bestScore > 0 ? bestScore : "--";
+
 
 // Démarre le chronomètre si ce n'est pas déjà fait
   const demarrerChrono = () => {
@@ -207,13 +208,14 @@ const ajouterScoreVariable = () => {
             if (matchedPairs === 8) {
               arreterChrono(); // Arrête le chronomètre
               // Vérifie si c'est un nouveau meilleur score
-              if (bestScore === null || movesCounter < parseInt(bestScore)) {
-                localStorage.setItem("bestScore", movesCounter);
-                bestScoreDisplay.textContent = movesCounter;
-                alert(`Félicitations ! Nouveau meilleur score : ${movesCounter} coups.`);
+             if (score > bestScore) {
+              localStorage.setItem("bestScore", score);
+              bestScoreDisplay.textContent = score;
+              alert(`Félicitations ! Nouveau meilleur score : ${score} points !`);
               } else {
-                alert(`Bravo ! Tu as terminé en ${movesCounter} coups.`);
+              alert(`Bravo ! Tu as terminé avec ${score} points.`);
               }
+
               generateImageCards(); // Relance une nouvelle partie
             }
           } else {
