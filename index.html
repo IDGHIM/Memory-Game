@@ -26,51 +26,56 @@
 
     <div id="elements-div">
       <section id="title-section">
-        <div id="title-div">
-          <h1>Jeu de mémoire</h1>
+        <div id="title-div" class="fade-in-up">
+          <h1 class="underline-animated">Jeu de mémoire</h1>
         </div>
       </section>
-      <section id="description-section"> 
-        <div id="description-title-div">
-          <h2>Règles du jeu</h2>
+
+      <section id="description-section">
+        <div id="description-title-div" class="fade-in-up">
+          <h2 class="underline-animated">Règles du jeu</h2>
         </div>
-        <div id="description-div">
+        <div id="description-div" class="fade-in-up">
           <p>Tu dois retrouver les paires en retournant deux cartes à la fois !</p>
           <p>Si les cartes correspondent, elles restent visibles. Sinon, elles se retournent à nouveau.</p>
           <p>Le jeu est chronométré et tu peux voir ton score et le nombre de coups.</p>
           <p>Bonne chance !</p>
         </div>
       </section>
-      <section id="difficulty">
-          <label for="difficulty-select">Niveau de difficulté :</label>
-            <select id="difficulty-select">
-              <option value="facile">Facile (8 paires)</option>
-              <option value="normal" selected>Normal (10 paires)</option>
-              <option value="difficile">Difficile (12 paires)</option>
-            </select>
+
+      <section id="difficulty" class="fade-in-up difficulty-section">
+        <label for="difficulty-select">Niveau de difficulté :</label>
+        <select id="difficulty-select">
+          <option value="facile">Facile (8 paires)</option>
+          <option value="normal" selected>Normal (10 paires)</option>
+          <option value="difficile">Difficile (12 paires)</option>
+        </select>
       </section>
+
       <section id="game-section">
-        <div id="game-div">
-          <div id="chrono">00:00</div>
-          <div id="buttons">
-            <button id="reset" class="chrono-button">Reset</button>
+        <div id="game-div" class="fade-in-up">
+          <div id="chrono-reset-container">
+            <div id="chrono">00:00</div>
+            <button id="reset">Reset</button>
           </div>
           <div id="card-container" class="grid"></div>
-          <div id="score-container">
-            <div>Score : <span id="score-counter">0</span></div>
-            <div>Coups : <span id="moves-counter">0</span></div>
-            <div>Meilleur score : <span id="best-score">--</span></div>
+          <div id="scoreboard">
+            <div>Score : 0</div>
+            <div>Coups : 0</div>
+            <div>Meilleur score : --</div>
           </div>
         </div>
       </section>
-      </div>
-    <footer> 
-      <div id="footer-content">
+    </div>
+
+    <footer>
+      <div id="footer-content" class="fade-in-up">
         <p>Jeu de mémoire - 2025</p>
         <p>Développé par DGHIM Ichem / EVANNO Théo / BELHOCINE Warrick</p>
-        <p>Contact : </p>
+        <p>Contact :</p>
       </div>
     </footer>
+
     <script src="script.js"></script>
   </body>
 </html>
