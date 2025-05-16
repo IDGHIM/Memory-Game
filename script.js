@@ -7,6 +7,18 @@ document.addEventListener("DOMContentLoaded", () => {
   const resetBtn = document.getElementById("reset");
   const scoreDisplay = document.getElementById("score-counter");
 
+// Préparation des effets sonores
+const flipSound = new Audio("sound/return_card.wav");
+const matchSound = new Audio("sound/valid_pair.wav");
+const mismatchSound = new Audio("sound/fail_pair.mp3");
+
+// Fonction utilitaire pour rejouer un son sans coupure
+function playSound(sound) {
+  const clone = sound.cloneNode();
+  clone.play();
+}
+
+
 // Variables de jeu
   let movesCounter = 0;   // Compteur de coups
   let flippedCards = [];  // Cartes retournées
@@ -56,7 +68,6 @@ document.addEventListener("DOMContentLoaded", () => {
     const minStr = minutes < 10 ? "0" + minutes : minutes;
     const secStr = secondes < 10 ? "0" + secondes : secondes;
     chrono.textContent = `${minStr}:${secStr}`;
-
     timeout = setTimeout(defilerTemps, 1000);
   };
 
@@ -176,19 +187,21 @@ const ajouterScoreVariable = () => {
         // Retourne la carte et ajoute à la liste des cartes retournées
         card.classList.add("flipped");
         flippedCards.push(card);
+        playSound(flipSound); // <<< joue le son de retournement
 
         // Si deux cartes sont retournées
         if (flippedCards.length === 2) {
           movesCounter++; // Incrémente le nombre de coups
           counterDisplay.textContent = movesCounter;
-
           const [card1, card2] = flippedCards;
+          
 
           // Vérifie si les deux cartes sont identiques
           if (card1.dataset.value === card2.dataset.value) {
             matchedPairs++; // Incrémente le nombre de paires trouvées
             flippedCards = [];
             ajouterScoreVariable(); // Score dynamique ici
+            playSound(matchSound); // <<< joue le son de correspondance
 
             // Si toutes les paires sont trouvées
             if (matchedPairs === 8) {
@@ -209,6 +222,7 @@ const ajouterScoreVariable = () => {
               card1.classList.remove("flipped");
               card2.classList.remove("flipped");
               flippedCards = [];
+              playSound(mismatchSound); // <<< joue le son de non correspondance
             }, 1000);
           }
         }
