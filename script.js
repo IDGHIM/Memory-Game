@@ -5,11 +5,13 @@ document.addEventListener("DOMContentLoaded", () => {
   const bestScoreDisplay = document.getElementById("best-score");
   const chrono = document.getElementById("chrono");
   const resetBtn = document.getElementById("reset");
+  const scoreDisplay = document.getElementById("score-counter");
 
 // Variables de jeu
   let movesCounter = 0;   // Compteur de coups
   let flippedCards = [];  // Cartes retournées
   let matchedPairs = 0;   // Nombre de paires trouvées
+  let score = 0; // Score 
 
 // Variables de chronomètre
   let heures = 0;
@@ -67,6 +69,14 @@ document.addEventListener("DOMContentLoaded", () => {
     secondes = 0;
     clearTimeout(timeout);
   };
+
+  // Ajouter un score variable à chaque paire trouvée
+const ajouterScoreVariable = () => {
+  const totalSeconds = heures * 3600 + minutes * 60 + secondes;
+  const points = Math.max(150 - (movesCounter * 2 + totalSeconds / 2), 10);
+  score += Math.floor(points);
+  scoreDisplay.textContent = score;
+};
 
 // Fonction pour générer les cartes d'images
   function generateImageCards() {
@@ -178,6 +188,7 @@ document.addEventListener("DOMContentLoaded", () => {
           if (card1.dataset.value === card2.dataset.value) {
             matchedPairs++; // Incrémente le nombre de paires trouvées
             flippedCards = [];
+            ajouterScoreVariable(); // Score dynamique ici
 
             // Si toutes les paires sont trouvées
             if (matchedPairs === 8) {
@@ -213,6 +224,8 @@ document.addEventListener("DOMContentLoaded", () => {
     arreterChrono();
     resetChrono();
     generateImageCards();
+    score = 0;
+    scoreDisplay.textContent = score;
   });
 
 // Génère les cartes au chargement initial
