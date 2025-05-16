@@ -248,7 +248,8 @@ document.addEventListener("DOMContentLoaded", () => {
               } else {
                 alert(`Bravo ! Tu as terminé avec ${score} points.`);
               }
-
+              score = 0;
+              scoreDisplay.textContent = score;
               generateImageCards(); // Relance une nouvelle partie
             }
           } else {
