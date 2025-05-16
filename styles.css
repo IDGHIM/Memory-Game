@@ -135,7 +135,7 @@ a {
 
 #game-div {
   width: 100%;
-  max-width: 900px; /* augmenté un peu pour plus de place */
+  max-width: 900px;
   text-align: center;
   background: var(--light);
   padding: 20px;
@@ -144,11 +144,11 @@ a {
   margin: 0 auto;
 }
 
-/* ================== NIVEAU DE DIFFICULTÉ (section difficulty) ================== */
+/* ================== NIVEAU DE DIFFICULTÉ ================== */
 #difficulty {
   width: 100%;
   max-width: 220px;
-  margin: 0 auto 20px; /* marge en bas pour espacer de la grille */
+  margin: 0 auto 20px;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
@@ -191,7 +191,7 @@ a {
   display: grid;
   gap: 10px;
   justify-content: center;
-  max-width: 900px; /* limite la largeur max pour pas dépasser */
+  max-width: 900px;
   margin: 0 auto;
   /* grid-template-columns et grid-auto-rows seront définis via JS */
 }
@@ -257,17 +257,17 @@ a {
 
 /* ================== CHRONO & SCORE ================== */
 #chrono {
-  font-size: 2.2rem; /* modifié : taille plus grande */
-  font-weight: 700; /* modifié : gras */
-  color: var(--primary); /* modifié : couleur primaire */
-  background: #fef3f3; /* modifié : fond clair */
-  padding: 12px 25px; /* modifié : padding plus important */
-  border-radius: 12px; /* modifié : coins arrondis */
-  border: 2px solid var(--primary); /* modifié : bordure rouge */
+  font-size: 2.2rem;
+  font-weight: 700;
+  color: var(--primary);
+  background: #fef3f3;
+  padding: 12px 25px;
+  border-radius: 12px;
+  border: 2px solid var(--primary);
   width: fit-content;
   margin: 20px auto;
   user-select: none;
-  box-shadow: 0 0 10px rgba(192, 57, 43, 0.3); /* modifié : ombre légère */
+  box-shadow: 0 0 10px rgba(192, 57, 43, 0.3);
 }
 
 #score-container {
@@ -298,7 +298,8 @@ a {
   justify-content: center;
   border-top: 2px solid var(--primary);
   border-bottom: 2px solid var(--primary);
-  margin-bottom: 30px;
+  margin: 40px auto 30px; /* marge en haut et en bas pour espacer des cartes */
+  max-width: 900px;
 }
 
 #score-container {
@@ -347,15 +348,15 @@ section {
 
 /* ================== BOUTON RESET ================== */
 #reset {
-  background-color: var(--primary); /* modifié : fond rouge vif */
-  color: var(--white); /* modifié : texte blanc */
+  background-color: var(--primary);
+  color: var(--white);
   border: none;
   padding: 10px 20px;
   font-size: 1.2rem;
   font-weight: 600;
   border-radius: 6px;
   cursor: pointer;
-  box-shadow: 0 4px 8px rgba(192, 57, 43, 0.4); /* modifié : ombre */
+  box-shadow: 0 4px 8px rgba(192, 57, 43, 0.4);
   transition: background-color 0.3s ease, box-shadow 0.3s ease;
   margin-top: 20px;
   user-select: none;
@@ -363,137 +364,66 @@ section {
 
 #reset:hover,
 #reset:focus {
-  background-color: #922b24; /* modifié : rouge foncé au hover */
+  background-color: #922b24;
   box-shadow: 0 6px 12px rgba(146, 43, 36, 0.6);
   outline: none;
 }
 
-/* ================== RESPONSIVE (SMARTPHONES) ================== */
+/* ================== RESPONSIVE (smartphone) ================== */
 @media (max-width: 480px) {
-  /* NAVIGATION */
-  #navbar ul {
-    gap: 15px;
-  }
-  .nav-link {
-    font-size: 1rem;
-  }
-
-  /* TITRE */
-  #title-section {
-    padding: 80px 15px;
-    min-height: 40vh;
-  }
   #title-div h1 {
-    font-size: 2.4rem;
-  }
-  #title-div h1::after {
-    width: 50px;
-    height: 3px;
+    font-size: 2.5rem;
   }
 
-  /* DESCRIPTION */
   #description-section {
     padding: 40px 15px;
   }
-  #description-title-div h2 {
-    font-size: 1.6rem;
-  }
+
   #description-div {
-    max-width: 90vw;
     font-size: 1rem;
+    max-width: 90%;
   }
 
-  /* CONTENU GÉNÉRAL */
-  #elements-div {
-    padding-top: 50px;
+  #difficulty {
+    max-width: 100%;
+    width: 100%;
   }
 
-  /* JEU */
-  #game-section {
-    padding: 40px 15px;
+  #difficulty-select {
+    max-width: 100%;
   }
+
   #game-div {
     max-width: 100%;
     padding: 15px;
   }
 
-  /* DIFFICULTÉ */
-  #difficulty {
-    max-width: 100%;
-    margin-bottom: 15px;
-    font-size: 1rem;
-  }
-  #difficulty-select {
-    font-size: 1rem;
-    max-width: 100%;
-    padding: 7px 12px;
-  }
-
-  /* GRILLE DE CARTES */
   .grid {
     gap: 8px;
-    max-width: 100%;
-    /* Pour smartphone, on met 3 colonnes max, mais cela peut être modifié dans JS */
-    grid-template-columns: repeat(auto-fit, minmax(70px, 1fr)) !important;
   }
 
-  .card {
-    /* hauteur fixe pour garder un ratio */
-    aspect-ratio: 3 / 4;
-  }
-
-  .card-front,
-  .card-back {
-    font-size: 1rem;
-  }
-
-  .card-back img {
-    max-width: 70%;
-    max-height: 80%;
-  }
-
-  /* CHRONO */
   #chrono {
-    font-size: 1.6rem;
-    padding: 10px 18px;
-    border-radius: 10px;
-    margin: 15px auto;
+    font-size: 1.8rem;
+    padding: 10px 20px;
   }
 
-  /* SCORE */
   #score-section {
-    padding: 15px 0;
-    margin-bottom: 20px;
+    margin: 30px 10px 20px;
   }
 
   #score-container {
+    flex-direction: column;
     gap: 15px;
-    font-size: 1rem;
-  }
-
-  #score-container > div {
-    min-width: 100px;
-    padding: 8px 15px;
-  }
-
-  #score-container span {
     font-size: 1.2rem;
   }
 
-  #score-container input {
-    width: 30px;
-    font-size: 1rem;
+  #score-container > div {
+    min-width: auto;
+    padding: 15px 20px;
   }
 
-  /* BOUTON RESET */
   #reset {
-    font-size: 1rem;
-    padding: 8px 18px;
-  }
-
-  /* FOOTER */
-  footer {
-    font-size: 0.8rem;
-    padding: 15px 10px;
+    width: 100%;
+    padding: 12px 0;
   }
 }
