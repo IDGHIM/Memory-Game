@@ -59,29 +59,64 @@ a {
 }
 
 /* ================== TITRE ================== */
+#title-section {
+  width: 100%;
+  padding: 100px 20px;
+  background-color: var(--primary);
+  color: var(--white);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 60vh;
+}
+
 #title-div {
   text-align: center;
-  padding: 40px 0 20px;
+  max-width: 800px;
 }
 
 #title-div h1 {
-  font-size: 2.5rem;
-  color: var(--primary);
-  margin: 0;
+  font-size: 3.5rem;
+  margin-bottom: 20px;
   position: relative;
+  color: var(--white);
 }
 
 #title-div h1::after {
   content: '';
   display: block;
-  width: 60px;
-  height: 3px;
+  width: 80px;
+  height: 4px;
   margin: 10px auto 0;
-  background-color: var(--primary);
+  background-color: var(--white);
   border-radius: 2px;
 }
 
-/* ================== CONTENU ================== */
+/* ================== DESCRIPTION ================== */
+#description-section {
+  width: 100%;
+  padding: 60px 20px;
+  background-color: var(--light);
+  color: var(--dark);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+#description-title-div h2 {
+  font-size: 2rem;
+  margin-bottom: 20px;
+  color: var(--primary);
+}
+
+#description-div {
+  max-width: 600px;
+  text-align: center;
+  line-height: 1.6;
+  font-size: 1.2rem;
+}
+
+/* ================== CONTENU GÉNÉRAL ================== */
 #elements-div {
   padding-top: 60px;
   display: flex;
@@ -90,14 +125,25 @@ a {
 }
 
 /* ================== JEU ================== */
-#game-container {
+#game-section {
+  width: 100%;
+  padding: 60px 20px;
+  background-color: #ffffff;
+  display: flex;
+  justify-content: center;
+}
+
+#game-div {
+  width: 100%;
+  max-width: 800px;
+  text-align: center;
   background: var(--light);
   padding: 20px;
   border-radius: 8px;
   box-shadow: 0 2px 6px rgba(0,0,0,0.1);
-  text-align: center;
 }
 
+/* Grille de cartes */
 .grid {
   display: grid;
   grid-template-columns: repeat(4, 100px);
@@ -185,4 +231,9 @@ footer {
 #footer-content p:first-child {
   font-weight: 600;
   color: var(--primary);
+}
+
+/* ================== ACCESSIBILITÉ SCROLL ================== */
+section {
+  scroll-margin-top: 80px;
 }
