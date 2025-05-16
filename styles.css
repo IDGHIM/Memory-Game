@@ -92,6 +92,44 @@ a {
   border-radius: 2px;
 }
 
+/* Animation machine à écrire sur les titres h1 et h2 */
+.typing-effect {
+  overflow: hidden; /* Cache le texte dépassant */
+  border-right: 4px solid var(--primary); /* Curseur en couleur primaire */
+  white-space: nowrap; /* Texte sur une seule ligne */
+  animation: typing 3s steps(15, end), blink-caret 0.75s step-end infinite;
+  font-weight: 700;
+  max-width: fit-content;
+  margin: 0 auto;
+  position: relative;
+  color: var(--primary);
+}
+
+/* Spécifique pour h1 */
+h1.typing-effect {
+  font-size: 3.5rem;
+  color: var(--white);
+  border-right-color: var(--white);
+}
+
+/* Spécifique pour h2 */
+h2.typing-effect {
+  font-size: 2rem;
+  color: var(--primary);
+  border-right-color: var(--primary);
+}
+
+@keyframes typing {
+  from { width: 0 }
+  to { width: 15ch; } /* longueur du texte (à ajuster selon titre) */
+}
+
+@keyframes blink-caret {
+  0%, 100% { border-color: transparent; }
+  50% { border-color: currentColor; }
+}
+
+
 /* ================== DESCRIPTION ================== */
 #description-section {
   width: 100%;
@@ -114,6 +152,27 @@ a {
   text-align: center;
   line-height: 1.6;
   font-size: 1.2rem;
+}
+
+#description-div p {
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fadeSlideUp 0.6s forwards;
+  animation-delay: calc(0.3s * var(--order));
+  margin-bottom: 1rem;
+}
+
+/* Pour appliquer un ordre personnalisé via une variable CSS */
+#description-div p:nth-child(1) { --order: 0; }
+#description-div p:nth-child(2) { --order: 1; }
+#description-div p:nth-child(3) { --order: 2; }
+#description-div p:nth-child(4) { --order: 3; }
+
+@keyframes fadeSlideUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 /* ================== CONTENU GÉNÉRAL ================== */
@@ -329,17 +388,65 @@ a {
 
 /* ================== FOOTER ================== */
 footer {
-  background: var(--dark);
+  background-color: var(--dark);
   color: var(--light);
   text-align: center;
-  padding: 20px 0;
-  font-size: 0.9rem;
+  padding: 25px 20px;
+  font-size: 0.95rem;
+  user-select: none;
+}
+
+#footer-content p {
+  margin: 8px 0;
 }
 
 #footer-content p:first-child {
   font-weight: 600;
   color: var(--primary);
+  font-size: 1.1rem;
 }
+
+#footer-content p:nth-child(2) {
+  font-style: italic;
+  font-size: 0.9rem;
+  color: #ccc;
+}
+
+#footer-content p:nth-child(3) {
+  margin-top: 15px;
+  font-weight: 600;
+}
+
+#footer-content p > a.btn.contact-details {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin: 5px 10px 5px 0;
+  padding: 6px 12px;
+  background-color: var(--primary);
+  color: var(--white);
+  border-radius: 6px;
+  font-weight: 600;
+  font-size: 0.9rem;
+  text-decoration: none;
+  transition: background-color 0.3s ease;
+}
+
+#footer-content p > a.btn.contact-details:hover,
+#footer-content p > a.btn.contact-details:focus {
+  background-color: #922b24;
+  outline: none;
+}
+
+.fa-mail {
+  width: 18px;
+  height: 18px;
+  object-fit: contain;
+  filter: invert(100%);
+  user-select: none;
+  pointer-events: none;
+}
+
 
 /* ================== ACCESSIBILITÉ SCROLL ================== */
 section {
@@ -369,37 +476,66 @@ section {
   outline: none;
 }
 
-/* ================== RESPONSIVE (smartphone) ================== */
-@media (max-width: 480px) {
-  #title-div h1 {
-    font-size: 2.5rem;
+/* =============== RÉPONSIVE TABLETTES ET SMARTPHONES =============== */
+
+/* Tablettes (768px à 1024px) */
+@media (max-width: 1024px) {
+  #title-section {
+    padding: 80px 15px;
+    min-height: 50vh;
+  }
+
+  #title-div h1.typing-effect {
+    font-size: 2.8rem;
   }
 
   #description-section {
-    padding: 40px 15px;
+    padding: 50px 15px;
+  }
+
+  #description-title-div h2 {
+    font-size: 1.8rem;
   }
 
   #description-div {
-    font-size: 1rem;
     max-width: 90%;
+    font-size: 1.1rem;
   }
 
-  #difficulty {
-    max-width: 100%;
-    width: 100%;
-  }
-
-  #difficulty-select {
-    max-width: 100%;
+  #game-section {
+    padding: 40px 15px;
   }
 
   #game-div {
-    max-width: 100%;
+    max-width: 700px;
     padding: 15px;
   }
 
-  .grid {
-    gap: 8px;
+  #difficulty {
+    max-width: 180px;
+    font-size: 1rem;
+  }
+
+  #difficulty-select {
+    font-size: 1rem;
+    max-width: 180px;
+    padding: 7px 12px;
+  }
+
+  #score-section {
+    max-width: 700px;
+    margin: 30px auto 20px;
+    padding: 15px 10px;
+  }
+
+  #score-container {
+    gap: 25px;
+    font-size: 1.2rem;
+  }
+
+  #score-container > div {
+    min-width: 120px;
+    padding: 8px 20px;
   }
 
   #chrono {
@@ -407,23 +543,122 @@ section {
     padding: 10px 20px;
   }
 
+  #reset {
+    font-size: 1rem;
+    padding: 8px 16px;
+  }
+}
+
+/* Smartphones (large) (up to 767px) */
+@media (max-width: 767px) {
+  #title-section {
+    padding: 60px 10px;
+    min-height: 40vh;
+  }
+
+  #title-div h1.typing-effect {
+    font-size: 2.2rem;
+  }
+
+  #description-section {
+    padding: 40px 10px;
+  }
+
+  #description-title-div h2 {
+    font-size: 1.5rem;
+  }
+
+  #description-div {
+    max-width: 100%;
+    font-size: 1rem;
+    padding: 0 10px;
+  }
+
+  #game-section {
+    padding: 30px 10px;
+  }
+
+  #game-div {
+    max-width: 100%;
+    padding: 10px;
+  }
+
+  #difficulty {
+    max-width: 100%;
+    font-size: 0.95rem;
+  }
+
+  #difficulty-select {
+    max-width: 100%;
+    font-size: 0.95rem;
+    padding: 6px 10px;
+  }
+
   #score-section {
-    margin: 30px 10px 20px;
+    max-width: 100%;
+    margin: 20px auto 15px;
+    padding: 10px;
   }
 
   #score-container {
     flex-direction: column;
     gap: 15px;
-    font-size: 1.2rem;
+    font-size: 1.1rem;
   }
 
   #score-container > div {
     min-width: auto;
-    padding: 15px 20px;
+    width: 100%;
+    padding: 8px 15px;
+  }
+
+  #chrono {
+    font-size: 1.6rem;
+    padding: 8px 15px;
   }
 
   #reset {
     width: 100%;
-    padding: 12px 0;
+    font-size: 1rem;
+    padding: 10px 0;
+  }
+}
+
+/* Smartphones (small) (up to 480px) */
+@media (max-width: 480px) {
+  #title-section {
+    padding: 50px 8px;
+    min-height: 35vh;
+  }
+
+  #title-div h1.typing-effect {
+    font-size: 1.8rem;
+  }
+
+  #description-title-div h2 {
+    font-size: 1.3rem;
+  }
+
+  #description-div {
+    font-size: 0.95rem;
+    padding: 0 8px;
+  }
+
+  #difficulty {
+    font-size: 0.9rem;
+  }
+
+  #difficulty-select {
+    font-size: 0.9rem;
+    padding: 5px 8px;
+  }
+
+  #score-container {
+    font-size: 1rem;
+  }
+
+  #chrono {
+    font-size: 1.4rem;
+    padding: 7px 10px;
   }
 }
