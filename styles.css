@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Raleway:wght@400;600&display=swap');
 
 /* ================== VARIABLES ================== */
 :root {
@@ -7,33 +7,18 @@
   --light: #ECF0F1;
   --white: #FFFFFF;
   --gray: #ddd;
-  --vivid-auburn: #C0392B; /* couleur barre soulignée animée */
-}
-
-/* ================== ANIMATION ================== */
-@keyframes underlineGrow {
-  0% {
-    width: 0;
-    opacity: 0;
-  }
-  100% {
-    width: 60px;
-    opacity: 1;
-  }
 }
 
 /* ================== BASE ================== */
 body {
-  font-family: 'Poppins', sans-serif;
+  font-family: 'Raleway', sans-serif;
   background-color: #f8f9fa;
   margin: 0;
   color: var(--dark);
-  line-height: 1.5;
 }
 
 html {
   scroll-behavior: smooth;
-  font-size: 16px;
 }
 
 a {
@@ -107,25 +92,6 @@ a {
   border-radius: 2px;
 }
 
-/* ================== SOULIGNEMENT ANIMÉ ================== */
-.underline-animated {
-  position: relative;
-  display: inline-block;
-}
-
-.underline-animated::after {
-  content: '';
-  position: absolute;
-  width: 60px;
-  height: 4px;
-  background-color: var(--vivid-auburn);
-  bottom: -12px;
-  left: 50%;
-  transform: translateX(-50%);
-  border-radius: 2px;
-  animation: underlineGrow 1.2s ease forwards;
-}
-
 /* ================== DESCRIPTION ================== */
 #description-section {
   width: 100%;
@@ -141,11 +107,6 @@ a {
   font-size: 2rem;
   margin-bottom: 20px;
   color: var(--primary);
-}
-
-#description-title-div h2.underline-animated {
-  position: relative;
-  display: inline-block;
 }
 
 #description-div {
@@ -174,7 +135,7 @@ a {
 
 #game-div {
   width: 100%;
-  max-width: 900px;
+  max-width: 900px; /* augmenté un peu pour plus de place */
   text-align: center;
   background: var(--light);
   padding: 20px;
@@ -188,7 +149,7 @@ a {
   display: grid;
   gap: 10px;
   justify-content: center;
-  max-width: 900px;
+  max-width: 900px; /* limite la largeur max pour pas dépasser */
   margin: 0 auto;
   /* grid-template-columns et grid-auto-rows seront définis via JS */
 }
@@ -252,109 +213,38 @@ a {
   pointer-events: none;
 }
 
-/* ================== CONTENEUR CHRONO ET RESET ================== */
-#chrono-reset-container {
+/* ================== CHRONO & SCORE ================== */
+#chrono {
+  font-size: 2.2rem; /* modifié : taille plus grande */
+  font-weight: 700; /* modifié : gras */
+  color: var(--primary); /* modifié : couleur primaire */
+  background: #fef3f3; /* modifié : fond clair */
+  padding: 12px 25px; /* modifié : padding plus important */
+  border-radius: 12px; /* modifié : coins arrondis */
+  border: 2px solid var(--primary); /* modifié : bordure rouge */
+  width: fit-content;
+  margin: 20px auto;
+  user-select: none;
+  box-shadow: 0 0 10px rgba(192, 57, 43, 0.3); /* modifié : ombre légère */
+}
+
+#score-container {
   display: flex;
   justify-content: center;
-  align-items: center;
-  gap: 20px; /* espace entre chrono et bouton */
-  margin: 20px auto; /* centrage horizontal avec marge */
+  gap: 2rem;
+  margin-top: 1rem;
 }
 
-/* ================== CHRONO ================== */
-#chrono {
-  font-size: 2.2rem;
-  font-weight: 700;
-  color: var(--primary);
-  background: #fef3f3;
-  padding: 12px 25px;
-  border-radius: 12px;
-  border: 2px solid var(--primary);
-  width: fit-content;
-  user-select: none;
-  box-shadow: 0 0 10px rgba(192, 57, 43, 0.3);
-}
-
-/* ================== BOUTON RESET ================== */
-#reset {
-  background-color: var(--primary);
-  color: var(--white);
-  border: none;
-  padding: 10px 20px;
+#score-container p,
+#score-container input {
   font-size: 1.2rem;
-  font-weight: 600;
-  border-radius: 6px;
-  cursor: pointer;
-  box-shadow: 0 4px 8px rgba(192, 57, 43, 0.4);
-  transition: background-color 0.3s ease, box-shadow 0.3s ease;
-  user-select: none;
-  margin-top: 0;
 }
 
-#reset:hover,
-#reset:focus {
-  background-color: #922b24;
-  box-shadow: 0 6px 12px rgba(146, 43, 36, 0.6);
-  outline: none;
-}
-
-/* ================== NIVEAU DE DIFFICULTÉ (select) ================== */
-#difficulty-select {
-  font-size: 1.1rem;
-  padding: 8px 15px;
-  border-radius: 6px;
-  border: 2px solid var(--primary);
-  background-color: var(--white);
-  color: var(--dark);
-  cursor: pointer;
-  box-shadow: 0 2px 6px rgba(192, 57, 43, 0.25);
-  transition: border-color 0.3s ease, box-shadow 0.3s ease;
-  user-select: none;
-  margin: 10px 0 30px;
-  width: 180px;
-}
-
-#difficulty-select:hover,
-#difficulty-select:focus {
-  border-color: #922b24;
-  box-shadow: 0 0 10px rgba(146, 43, 36, 0.6);
-  outline: none;
-}
-
-/* ================== SECTION NIVEAU DE DIFFICULTÉ ================== */
-#difficulty {
-  background-color: #fbeae9; /* fond doux rose pâle */
-  border: 2px solid var(--primary); /* bordure rouge vif */
-  padding: 20px 30px;
-  border-radius: 12px;
-  box-shadow: 0 4px 12px rgba(192, 57, 43, 0.25); /* ombre rouge douce */
-  max-width: 320px;
-  margin: 30px auto 50px; /* centré horizontalement avec marge haut et bas */
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 15px;
-  font-weight: 600;
-  color: var(--dark);
-  transition: box-shadow 0.3s ease, background-color 0.3s ease;
-  user-select: none;
-}
-
-#difficulty:hover {
-  background-color: #f9d6d3; /* un rose un peu plus saturé au hover */
-  box-shadow: 0 6px 16px rgba(192, 57, 43, 0.4);
-}
-
-/* Ajustement label dans la section */
-#difficulty label {
-  font-size: 1.2rem;
-  cursor: default;
-}
-
-/* Conserve le style existant sur le select */
-#difficulty-select {
-  width: 100%;
-  max-width: 220px; /* limite largeur select */
+#score-container input {
+  width: 40px;
+  text-align: center;
+  border: 1px solid var(--dark);
+  border-radius: 4px;
 }
 
 /* ================== FOOTER ================== */
@@ -376,110 +266,146 @@ section {
   scroll-margin-top: 80px;
 }
 
-/* ================== RESPONSIVE POUR TÉLÉPHONES ================== */
+/* ================== BOUTON RESET ================== */
+#reset {
+  background-color: var(--primary); /* modifié : fond rouge vif */
+  color: var(--white); /* modifié : texte blanc */
+  border: none;
+  padding: 10px 20px;
+  font-size: 1.2rem;
+  font-weight: 600;
+  border-radius: 6px;
+  cursor: pointer;
+  box-shadow: 0 4px 8px rgba(192, 57, 43, 0.4); /* modifié : ombre */
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
+  margin-top: 20px;
+  user-select: none;
+}
+
+#reset:hover,
+#reset:focus {
+  background-color: #922b24; /* modifié : rouge foncé au hover */
+  box-shadow: 0 6px 12px rgba(146, 43, 36, 0.6);
+  outline: none;
+}
+
+/* ================== NIVEAU DE DIFFICULTÉ (select) ================== */
+#difficulty-select {
+  font-size: 1.1rem; /* modifié : taille de police */
+  padding: 8px 15px; /* modifié : padding */
+  border-radius: 6px; /* modifié : coins arrondis */
+  border: 2px solid var(--primary); /* modifié : bordure rouge */
+  background-color: var(--white); /* modifié : fond blanc */
+  color: var(--dark); /* modifié : couleur texte */
+  cursor: pointer;
+  box-shadow: 0 2px 6px rgba(192, 57, 43, 0.25); /* modifié : ombre légère */
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+  user-select: none;
+  margin: 10px 0 30px;
+  width: 180px;
+}
+
+#difficulty-select:hover,
+#difficulty-select:focus {
+  border-color: #922b24; /* modifié : bordure rouge foncé au hover */
+  box-shadow: 0 0 10px rgba(146, 43, 36, 0.6);
+  outline: none;
+}
+
+/* ================== MEDIA QUERIES ================== */
 @media (max-width: 600px) {
-  html {
-    font-size: 14px;
+  /* NAVIGATION : menu horizontal devient vertical + plus petit */
+  #navbar {
+    height: auto;
+    padding: 10px 0;
   }
-
   #navbar ul {
-    gap: 15px;
+    flex-direction: column;
+    gap: 12px;
   }
-
   .nav-link {
     font-size: 1rem;
   }
 
+  /* TITRE : réduction des paddings et taille police */
   #title-section {
     padding: 60px 15px;
     min-height: 40vh;
   }
-
   #title-div h1 {
     font-size: 2.5rem;
   }
 
+  /* DESCRIPTION : paddings réduits et texte un peu plus petit */
   #description-section {
     padding: 40px 15px;
   }
-
   #description-title-div h2 {
     font-size: 1.5rem;
   }
-
   #description-div {
     font-size: 1rem;
-    max-width: 90%;
+    max-width: 90vw;
   }
 
+  /* CONTENEUR PRINCIPAL : ajustement padding */
   #elements-div {
-    padding-top: 40px;
+    padding-top: 50px; /* légèrement réduit */
   }
 
-  #game-section {
-    padding: 40px 15px;
-  }
-
+  /* JEU : réduit la largeur max et padding */
   #game-div {
+    max-width: 100%;
     padding: 15px;
+    margin: 0 10px;
   }
 
+  /* GRILLE : utilise moins de colonnes, plus compact */
   .grid {
     gap: 8px;
     max-width: 100%;
-    grid-template-columns: repeat(auto-fit, minmax(80px, 1fr)) !important;
+    grid-template-columns: repeat(auto-fit, minmax(70px, 1fr)); /* colonnes adaptatives */
   }
 
+  /* CARTES : hauteur fixe, carrées */
   .card {
-    height: 100px;
+    aspect-ratio: 1 / 1; /* carré parfait */
+    width: 100%;
   }
 
-  #chrono-reset-container {
-    flex-direction: column;
-    gap: 10px;
+  /* CHRONO : taille réduite et centrée */
+  #chrono {
+    font-size: 1.6rem;
+    padding: 8px 20px;
     margin: 15px auto;
   }
 
-  #chrono {
-    font-size: 1.8rem;
-    padding: 10px 20px;
-  }
-
+  /* BOUTON RESET : plus petit */
   #reset {
     font-size: 1rem;
-    padding: 8px 16px;
-    width: 100%;
+    padding: 8px 15px;
+    margin-top: 15px;
   }
 
+  /* SCOREBOARD (non défini dans ton CSS, mais si tu en as un) */
+  #scoreboard {
+    font-size: 1rem;
+    display: flex;
+    justify-content: space-around;
+    margin-top: 10px;
+  }
+
+  /* SELECT DIFFICULTÉ : taille plus petite */
   #difficulty-select {
     width: 100%;
+    max-width: 250px;
+    font-size: 1rem;
+    padding: 6px 12px;
   }
-}
 
-/* ================== SCOREBOARD ================== */
-#scoreboard {
-  background-color: #fdecea; /* très léger rose pâle */
-  border: 2px solid var(--primary); /* bordure rouge vif */
-  padding: 15px 25px;
-  border-radius: 10px;
-  max-width: 300px;
-  margin: 25px auto;
-  box-shadow: 0 4px 12px rgba(192, 57, 43, 0.25);
-  font-weight: 700;
-  color: var(--primary);
-  font-size: 1.4rem;
-  display: flex;
-  justify-content: space-around;
-  user-select: none;
-}
-
-#scoreboard > div {
-  flex: 1;
-  text-align: center;
-  border-right: 1px solid var(--primary);
-  padding: 0 10px;
-}
-
-#scoreboard > div:last-child {
-  border-right: none;
+  /* FOOTER : texte plus petit et padding réduit */
+  footer {
+    font-size: 0.8rem;
+    padding: 15px 10px;
+  }
 }

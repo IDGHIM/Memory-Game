@@ -15,7 +15,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // Fonction utilitaire pour rejouer un son sans coupure
   function playSound(sound) {
-    // Cloner le son pour pouvoir le jouer plusieurs fois simultanément
     const clone = sound.cloneNode();
     clone.play();
   }
@@ -42,7 +41,7 @@ document.addEventListener("DOMContentLoaded", () => {
   // Récupère et affiche le meilleur score pour la difficulté courante
   function loadBestScore() {
     let bestScore = localStorage.getItem(getBestScoreKey());
-    bestScore = bestScore ? parseInt(bestScore, 10) : 0;
+    bestScore = bestScore ? parseInt(bestScore) : 0;
     bestScoreDisplay.textContent = bestScore > 0 ? bestScore : "--";
     return bestScore;
   }
@@ -77,11 +76,10 @@ document.addEventListener("DOMContentLoaded", () => {
       minutes = 0;
     }
 
-    // Formatage de l'affichage du chronomètre (mm:ss)
+    // Formatage de l'affichage du chronomètre
     const minStr = minutes < 10 ? "0" + minutes : minutes;
     const secStr = secondes < 10 ? "0" + secondes : secondes;
     chrono.textContent = `${minStr}:${secStr}`;
-
     timeout = setTimeout(defilerTemps, 1000);
   };
 
@@ -98,7 +96,6 @@ document.addEventListener("DOMContentLoaded", () => {
   // Ajouter un score variable à chaque paire trouvée
   const ajouterScoreVariable = () => {
     const totalSeconds = heures * 3600 + minutes * 60 + secondes;
-    // Calcule le score selon le nombre de coups et le temps écoulé, minimum 10 points
     const points = Math.max(150 - (movesCounter * 2 + totalSeconds / 2), 10);
     score += Math.floor(points);
     scoreDisplay.textContent = score;
@@ -166,27 +163,28 @@ document.addEventListener("DOMContentLoaded", () => {
     if (difficultySelect.value === "facile") pairsCount = 8;
     else if (difficultySelect.value === "difficile") pairsCount = 12;
 
-    // Nombre de colonnes fixes (exemple : 4 colonnes)
-    const cols = 4;
+    // Nombre de colonnes fixes (par exemple 4)
+    let cols = 4;
 
-    // Détermine la largeur des colonnes selon la difficulté
+    // --- Nouvelle logique ---
+    // Plus il y a de paires, plus la largeur des colonnes augmente
     let colWidth;
     if (pairsCount <= 8) colWidth = "140px";       // Facile : colonnes larges
     else if (pairsCount <= 10) colWidth = "160px"; // Normal : colonnes moyennes
-    else colWidth = "180px";                        // Difficile : colonnes plus larges
+    else colWidth = "180px";                        // Difficile : colonnes encore plus larges
 
-    // Applique les styles CSS dynamiques pour la grille de cartes
+    // Application des styles CSS dynamiques pour la grille
     cardContainer.style.display = "grid";
     cardContainer.style.gridTemplateColumns = `repeat(${cols}, ${colWidth})`;
 
     // Hauteur des lignes proportionnelle à la largeur (ex: 1.25 fois la largeur)
-    const colWidthNum = parseInt(colWidth, 10);
+    const colWidthNum = parseInt(colWidth);
     cardContainer.style.gridAutoRows = `${Math.floor(colWidthNum * 1.25)}px`;
 
-    // Sélection des images à utiliser pour les paires
+    // Sélection des images à utiliser
     const selectedImages = cardImages.slice(0, pairsCount);
     const imagePairs = [...selectedImages, ...selectedImages]; // Duplique les images pour créer des paires
-    imagePairs.sort(() => Math.random() - 0.5); // Mélange aléatoire des cartes
+    imagePairs.sort(() => Math.random() - 0.5); // Mélange les paires d'images
 
     // Réinitialise le conteneur de cartes et les compteurs
     cardContainer.innerHTML = "";
@@ -207,8 +205,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
       card.innerHTML = `
         <div class='card-inner'>
-          <div class='card-front'><img src="image/back_card.png" alt="carte" style="width: 100%; height: 100%;" /></div>
-          <div class='card-back'><img src="${imgSrc}" alt="carte" style="width: 100%; height: 100%;" /></div>
+          <div class='card-front'>?</div>
+          <div class='card-back'><img src="${imgSrc}" alt="carte" style="width: 80px; height: 100px;" /></div>
         </div>`;
 
       // Ajoute un événement de clic pour retourner la carte
@@ -251,10 +249,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 alert(`Bravo ! Tu as terminé avec ${score} points.`);
               }
 
-              // Réinitialise le score et relance une nouvelle partie
-              score = 0;
-              scoreDisplay.textContent = score;
-              generateImageCards();
+              generateImageCards(); // Relance une nouvelle partie
             }
           } else {
             // Si les cartes ne correspondent pas, les retourne après 1 seconde
@@ -279,8 +274,12 @@ document.addEventListener("DOMContentLoaded", () => {
   generateImageCards();
 
   // Relance le jeu à chaque changement de difficulté
-  difficultySelect.addEventListener("change", generateImageCards);
+  difficultySelect.addEventListener("change", () => {
+    generateImageCards();
+  });
 
   // Bouton reset pour recommencer la partie
-  resetBtn.addEventListener("click", generateImageCards);
+  resetBtn.addEventListener("click", () => {
+    generateImageCards();
+  });
 });
