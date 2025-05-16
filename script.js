@@ -1,5 +1,4 @@
-// script.js
-
+// Attend que le DOM soit entièrement chargé avant d'exécuter le script
 document.addEventListener("DOMContentLoaded", () => {
   const cardContainer = document.getElementById("card-container");
   const counterDisplay = document.getElementById("moves-counter");
@@ -7,19 +6,23 @@ document.addEventListener("DOMContentLoaded", () => {
   const chrono = document.getElementById("chrono");
   const resetBtn = document.getElementById("reset");
 
-  let movesCounter = 0;
-  let flippedCards = [];
-  let matchedPairs = 0;
+// Variables de jeu
+  let movesCounter = 0;   // Compteur de coups
+  let flippedCards = [];  // Cartes retournées
+  let matchedPairs = 0;   // Nombre de paires trouvées
 
+// Variables de chronomètre
   let heures = 0;
   let minutes = 0;
   let secondes = 0;
   let timeout;
-  let estArrete = true;
+  let estArrete = true; // Indicateur d'arrêt du chronomètre
 
+// Affichage du meilleur score
   let bestScore = localStorage.getItem("bestScore");
   bestScoreDisplay.textContent = bestScore ? bestScore : "--";
 
+// Démarre le chronomètre si ce n'est pas déjà fait
   const demarrerChrono = () => {
     if (estArrete) {
       estArrete = false;
@@ -27,11 +30,13 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   };
 
+// Arrête le chronomètre
   const arreterChrono = () => {
     estArrete = true;
     clearTimeout(timeout);
   };
 
+// Fonction pour faire défiler le temps
   const defilerTemps = () => {
     if (estArrete) return;
 
@@ -45,6 +50,7 @@ document.addEventListener("DOMContentLoaded", () => {
       minutes = 0;
     }
 
+// Formatage de l'affichage du chronomètre
     const minStr = minutes < 10 ? "0" + minutes : minutes;
     const secStr = secondes < 10 ? "0" + secondes : secondes;
     chrono.textContent = `${minStr}:${secStr}`;
@@ -52,6 +58,7 @@ document.addEventListener("DOMContentLoaded", () => {
     timeout = setTimeout(defilerTemps, 1000);
   };
 
+// Réinitialise le chronomètre
   const resetChrono = () => {
     chrono.textContent = "00:00";
     estArrete = true;
@@ -61,8 +68,9 @@ document.addEventListener("DOMContentLoaded", () => {
     clearTimeout(timeout);
   };
 
+// Fonction pour générer les cartes d'images
   function generateImageCards() {
-    const cardImages = [
+    const cardImages = [ // Liste complète des images disponibles
       "image/cartes_classiques/2c.gif",
       "image/cartes_classiques/3c.gif",
       "image/cartes_classiques/4c.gif",
@@ -128,13 +136,14 @@ document.addEventListener("DOMContentLoaded", () => {
       "image/cartes_classiques/Qj.gif",
       "image/cartes_classiques/Kj.gif",
       "image/cartes_classiques/Aj.gif",
-      
     ];
 
-    const selectedImages = cardImages.slice(0, 8);
-    const imagePairs = [...selectedImages, ...selectedImages];
-    imagePairs.sort(() => Math.random() - 0.5);
+// Sélectionne 8 images aléatoires et les duplique
+    const selectedImages = cardImages.slice(0, 8); 
+    const imagePairs = [...selectedImages, ...selectedImages]; // Duplique les images pour créer des paires
+    imagePairs.sort(() => Math.random() - 0.5); // Mélange les paires d'images
 
+// Réinitialise le conteneur de cartes et les compteurs
     cardContainer.innerHTML = "";
     movesCounter = 0;
     matchedPairs = 0;
@@ -143,40 +152,50 @@ document.addEventListener("DOMContentLoaded", () => {
     resetChrono();
     estArrete = true;
 
+// Crée les cartes et les ajoute au conteneur
     imagePairs.forEach((imgSrc) => {
       const card = document.createElement("div");
       card.className = "card";
       card.dataset.value = imgSrc;
 
+// Ajoute une image de fond pour la carte
       card.innerHTML = `
         <div class='card-inner'>
           <div class='card-front'>?</div>
           <div class='card-back'><img src="${imgSrc}" alt="carte" style="width: 80px; height: 100px;" /></div>
         </div>`;
 
+// Ajoute un événement de clic pour retourner la carte
       card.addEventListener("click", function () {
+        // Démarre le chrono au premier clic
         if (estArrete) {
           demarrerChrono();
         }
 
+        // Ignore si la carte est déjà retournée ou si deux cartes sont déjà retournées
         if (card.classList.contains("flipped") || flippedCards.length >= 2)
           return;
 
+        // Retourne la carte et ajoute à la liste des cartes retournées
         card.classList.add("flipped");
         flippedCards.push(card);
 
+        // Si deux cartes sont retournées
         if (flippedCards.length === 2) {
-          movesCounter++;
+          movesCounter++; // Incrémente le nombre de coups
           counterDisplay.textContent = movesCounter;
 
           const [card1, card2] = flippedCards;
 
+          // Vérifie si les deux cartes sont identiques
           if (card1.dataset.value === card2.dataset.value) {
-            matchedPairs++;
+            matchedPairs++; // Incrémente le nombre de paires trouvées
             flippedCards = [];
 
+            // Si toutes les paires sont trouvées
             if (matchedPairs === 8) {
-              arreterChrono();
+              arreterChrono(); // Arrête le chronomètre
+              // Vérifie si c'est un nouveau meilleur score
               if (bestScore === null || movesCounter < parseInt(bestScore)) {
                 localStorage.setItem("bestScore", movesCounter);
                 bestScoreDisplay.textContent = movesCounter;
@@ -184,9 +203,10 @@ document.addEventListener("DOMContentLoaded", () => {
               } else {
                 alert(`Bravo ! Tu as terminé en ${movesCounter} coups.`);
               }
-              generateImageCards();
+              generateImageCards(); // Relance une nouvelle partie
             }
           } else {
+            // Si les cartes ne correspondent pas, les retourne après un délai
             setTimeout(() => {
               card1.classList.remove("flipped");
               card2.classList.remove("flipped");
@@ -196,15 +216,18 @@ document.addEventListener("DOMContentLoaded", () => {
         }
       });
 
+      // Ajoute la carte au conteneur
       cardContainer.appendChild(card);
     });
   }
 
+// Réinitialise le jeu au clic sur le bouton reset
   resetBtn.addEventListener("click", () => {
     arreterChrono();
     resetChrono();
     generateImageCards();
   });
 
+// Génère les cartes au chargement initial
   generateImageCards();
 });
