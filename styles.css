@@ -367,3 +367,133 @@ section {
   box-shadow: 0 6px 12px rgba(146, 43, 36, 0.6);
   outline: none;
 }
+
+/* ================== RESPONSIVE (SMARTPHONES) ================== */
+@media (max-width: 480px) {
+  /* NAVIGATION */
+  #navbar ul {
+    gap: 15px;
+  }
+  .nav-link {
+    font-size: 1rem;
+  }
+
+  /* TITRE */
+  #title-section {
+    padding: 80px 15px;
+    min-height: 40vh;
+  }
+  #title-div h1 {
+    font-size: 2.4rem;
+  }
+  #title-div h1::after {
+    width: 50px;
+    height: 3px;
+  }
+
+  /* DESCRIPTION */
+  #description-section {
+    padding: 40px 15px;
+  }
+  #description-title-div h2 {
+    font-size: 1.6rem;
+  }
+  #description-div {
+    max-width: 90vw;
+    font-size: 1rem;
+  }
+
+  /* CONTENU GÉNÉRAL */
+  #elements-div {
+    padding-top: 50px;
+  }
+
+  /* JEU */
+  #game-section {
+    padding: 40px 15px;
+  }
+  #game-div {
+    max-width: 100%;
+    padding: 15px;
+  }
+
+  /* DIFFICULTÉ */
+  #difficulty {
+    max-width: 100%;
+    margin-bottom: 15px;
+    font-size: 1rem;
+  }
+  #difficulty-select {
+    font-size: 1rem;
+    max-width: 100%;
+    padding: 7px 12px;
+  }
+
+  /* GRILLE DE CARTES */
+  .grid {
+    gap: 8px;
+    max-width: 100%;
+    /* Pour smartphone, on met 3 colonnes max, mais cela peut être modifié dans JS */
+    grid-template-columns: repeat(auto-fit, minmax(70px, 1fr)) !important;
+  }
+
+  .card {
+    /* hauteur fixe pour garder un ratio */
+    aspect-ratio: 3 / 4;
+  }
+
+  .card-front,
+  .card-back {
+    font-size: 1rem;
+  }
+
+  .card-back img {
+    max-width: 70%;
+    max-height: 80%;
+  }
+
+  /* CHRONO */
+  #chrono {
+    font-size: 1.6rem;
+    padding: 10px 18px;
+    border-radius: 10px;
+    margin: 15px auto;
+  }
+
+  /* SCORE */
+  #score-section {
+    padding: 15px 0;
+    margin-bottom: 20px;
+  }
+
+  #score-container {
+    gap: 15px;
+    font-size: 1rem;
+  }
+
+  #score-container > div {
+    min-width: 100px;
+    padding: 8px 15px;
+  }
+
+  #score-container span {
+    font-size: 1.2rem;
+  }
+
+  #score-container input {
+    width: 30px;
+    font-size: 1rem;
+  }
+
+  /* BOUTON RESET */
+  #reset {
+    font-size: 1rem;
+    padding: 8px 18px;
+  }
+
+  /* FOOTER */
+  footer {
+    font-size: 0.8rem;
+    padding: 15px 10px;
+  }
+}
