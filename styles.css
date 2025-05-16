@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Raleway:wght@400;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
 
 /* ================== VARIABLES ================== */
 :root {
@@ -11,7 +11,7 @@
 
 /* ================== BASE ================== */
 body {
-  font-family: 'Raleway', sans-serif;
+  font-family: 'Poppins', sans-serif;
   background-color: #f8f9fa;
   margin: 0;
   color: var(--dark);
@@ -144,6 +144,48 @@ a {
   margin: 0 auto;
 }
 
+/* ================== NIVEAU DE DIFFICULTÉ (section difficulty) ================== */
+#difficulty {
+  width: 100%;
+  max-width: 220px;
+  margin: 0 auto 20px; /* marge en bas pour espacer de la grille */
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 8px;
+  font-family: 'Poppins', sans-serif;
+  color: var(--dark);
+  font-weight: 600;
+  font-size: 1.1rem;
+  user-select: none;
+}
+
+#difficulty label {
+  cursor: pointer;
+}
+
+#difficulty-select {
+  font-size: 1.1rem;
+  padding: 8px 15px;
+  border-radius: 6px;
+  border: 2px solid var(--primary);
+  background-color: var(--white);
+  color: var(--dark);
+  cursor: pointer;
+  box-shadow: 0 2px 6px rgba(192, 57, 43, 0.25);
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+  user-select: none;
+  width: 100%;
+  max-width: 220px;
+}
+
+#difficulty-select:hover,
+#difficulty-select:focus {
+  border-color: #922b24;
+  box-shadow: 0 0 10px rgba(146, 43, 36, 0.6);
+  outline: none;
+}
+
 /* ================== GRILLE DE CARTES ADAPTATIVE ================== */
 .grid {
   display: grid;
@@ -247,6 +289,43 @@ a {
   border-radius: 4px;
 }
 
+/* ================== SECTION SCORE ================== */
+#score-section {
+  width: 100%;
+  background-color: var(--light);
+  padding: 20px 0;
+  display: flex;
+  justify-content: center;
+  border-top: 2px solid var(--primary);
+  border-bottom: 2px solid var(--primary);
+  margin-bottom: 30px;
+}
+
+#score-container {
+  display: flex;
+  gap: 40px;
+  font-size: 1.4rem;
+  font-weight: 600;
+  color: var(--dark);
+  user-select: none;
+}
+
+#score-container > div {
+  background: var(--white);
+  padding: 10px 25px;
+  border-radius: 10px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+  min-width: 140px;
+  text-align: center;
+}
+
+#score-container span {
+  color: var(--primary);
+  font-weight: 700;
+  font-size: 1.6rem;
+  margin-left: 5px;
+}
+
 /* ================== FOOTER ================== */
 footer {
   background: var(--dark);
@@ -287,125 +366,4 @@ section {
   background-color: #922b24; /* modifié : rouge foncé au hover */
   box-shadow: 0 6px 12px rgba(146, 43, 36, 0.6);
   outline: none;
-}
-
-/* ================== NIVEAU DE DIFFICULTÉ (select) ================== */
-#difficulty-select {
-  font-size: 1.1rem; /* modifié : taille de police */
-  padding: 8px 15px; /* modifié : padding */
-  border-radius: 6px; /* modifié : coins arrondis */
-  border: 2px solid var(--primary); /* modifié : bordure rouge */
-  background-color: var(--white); /* modifié : fond blanc */
-  color: var(--dark); /* modifié : couleur texte */
-  cursor: pointer;
-  box-shadow: 0 2px 6px rgba(192, 57, 43, 0.25); /* modifié : ombre légère */
-  transition: border-color 0.3s ease, box-shadow 0.3s ease;
-  user-select: none;
-  margin: 10px 0 30px;
-  width: 180px;
-}
-
-#difficulty-select:hover,
-#difficulty-select:focus {
-  border-color: #922b24; /* modifié : bordure rouge foncé au hover */
-  box-shadow: 0 0 10px rgba(146, 43, 36, 0.6);
-  outline: none;
-}
-
-/* ================== MEDIA QUERIES ================== */
-@media (max-width: 600px) {
-  /* NAVIGATION : menu horizontal devient vertical + plus petit */
-  #navbar {
-    height: auto;
-    padding: 10px 0;
-  }
-  #navbar ul {
-    flex-direction: column;
-    gap: 12px;
-  }
-  .nav-link {
-    font-size: 1rem;
-  }
-
-  /* TITRE : réduction des paddings et taille police */
-  #title-section {
-    padding: 60px 15px;
-    min-height: 40vh;
-  }
-  #title-div h1 {
-    font-size: 2.5rem;
-  }
-
-  /* DESCRIPTION : paddings réduits et texte un peu plus petit */
-  #description-section {
-    padding: 40px 15px;
-  }
-  #description-title-div h2 {
-    font-size: 1.5rem;
-  }
-  #description-div {
-    font-size: 1rem;
-    max-width: 90vw;
-  }
-
-  /* CONTENEUR PRINCIPAL : ajustement padding */
-  #elements-div {
-    padding-top: 50px; /* légèrement réduit */
-  }
-
-  /* JEU : réduit la largeur max et padding */
-  #game-div {
-    max-width: 100%;
-    padding: 15px;
-    margin: 0 10px;
-  }
-
-  /* GRILLE : utilise moins de colonnes, plus compact */
-  .grid {
-    gap: 8px;
-    max-width: 100%;
-    grid-template-columns: repeat(auto-fit, minmax(70px, 1fr)); /* colonnes adaptatives */
-  }
-
-  /* CARTES : hauteur fixe, carrées */
-  .card {
-    aspect-ratio: 1 / 1; /* carré parfait */
-    width: 100%;
-  }
-
-  /* CHRONO : taille réduite et centrée */
-  #chrono {
-    font-size: 1.6rem;
-    padding: 8px 20px;
-    margin: 15px auto;
-  }
-
-  /* BOUTON RESET : plus petit */
-  #reset {
-    font-size: 1rem;
-    padding: 8px 15px;
-    margin-top: 15px;
-  }
-
-  /* SCOREBOARD (non défini dans ton CSS, mais si tu en as un) */
-  #scoreboard {
-    font-size: 1rem;
-    display: flex;
-    justify-content: space-around;
-    margin-top: 10px;
-  }
-
-  /* SELECT DIFFICULTÉ : taille plus petite */
-  #difficulty-select {
-    width: 100%;
-    max-width: 250px;
-    font-size: 1rem;
-    padding: 6px 12px;
-  }
-
-  /* FOOTER : texte plus petit et padding réduit */
-  footer {
-    font-size: 0.8rem;
-    padding: 15px 10px;
-  }
 }
