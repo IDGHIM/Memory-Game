@@ -477,188 +477,58 @@ section {
 }
 
 /* =============== RÉPONSIVE TABLETTES ET SMARTPHONES =============== */
-
-/* Tablettes (768px à 1024px) */
-@media (max-width: 1024px) {
-  #title-section {
-    padding: 80px 15px;
-    min-height: 50vh;
-  }
-
-  #title-div h1.typing-effect {
-    font-size: 2.8rem;
-  }
-
-  #description-section {
-    padding: 50px 15px;
-  }
-
-  #description-title-div h2 {
-    font-size: 1.8rem;
+@media screen and (max-width: 414px) {
+  #title-div h1 {
+    font-size: 2.2rem;
   }
 
   #description-div {
-    max-width: 90%;
-    font-size: 1.1rem;
-  }
-
-  #game-section {
-    padding: 40px 15px;
-  }
-
-  #game-div {
-    max-width: 700px;
-    padding: 15px;
-  }
-
-  #difficulty {
-    max-width: 180px;
     font-size: 1rem;
+    padding: 0 10px;
+  }
+
+  .grid {
+    grid-template-columns: repeat(3, 1fr) !important;
+    grid-template-rows: auto;
+    gap: 8px;
+  }
+
+  .card {
+    height: 80px;
+  }
+
+  .card-back,
+  .card-front {
+    font-size: 1.5rem;
+  }
+
+  #chrono {
+    font-size: 1.6rem;
+    padding: 8px 16px;
   }
 
   #difficulty-select {
     font-size: 1rem;
-    max-width: 180px;
-    padding: 7px 12px;
-  }
-
-  #score-section {
-    max-width: 700px;
-    margin: 30px auto 20px;
-    padding: 15px 10px;
+    padding: 6px 12px;
   }
 
   #score-container {
-    gap: 25px;
-    font-size: 1.2rem;
+    flex-direction: column;
+    gap: 10px;
   }
 
   #score-container > div {
     min-width: 120px;
-    padding: 8px 20px;
-  }
-
-  #chrono {
-    font-size: 1.8rem;
-    padding: 10px 20px;
+    font-size: 1rem;
   }
 
   #reset {
     font-size: 1rem;
     padding: 8px 16px;
   }
-}
 
-/* Smartphones (large) (up to 767px) */
-@media (max-width: 767px) {
-  #title-section {
-    padding: 60px 10px;
-    min-height: 40vh;
-  }
-
-  #title-div h1.typing-effect {
-    font-size: 2.2rem;
-  }
-
-  #description-section {
-    padding: 40px 10px;
-  }
-
-  #description-title-div h2 {
-    font-size: 1.5rem;
-  }
-
-  #description-div {
-    max-width: 100%;
-    font-size: 1rem;
-    padding: 0 10px;
-  }
-
-  #game-section {
-    padding: 30px 10px;
-  }
-
-  #game-div {
-    max-width: 100%;
-    padding: 10px;
-  }
-
-  #difficulty {
-    max-width: 100%;
-    font-size: 0.95rem;
-  }
-
-  #difficulty-select {
-    max-width: 100%;
-    font-size: 0.95rem;
-    padding: 6px 10px;
-  }
-
-  #score-section {
-    max-width: 100%;
-    margin: 20px auto 15px;
-    padding: 10px;
-  }
-
-  #score-container {
-    flex-direction: column;
-    gap: 15px;
-    font-size: 1.1rem;
-  }
-
-  #score-container > div {
-    min-width: auto;
-    width: 100%;
-    padding: 8px 15px;
-  }
-
-  #chrono {
-    font-size: 1.6rem;
-    padding: 8px 15px;
-  }
-
-  #reset {
-    width: 100%;
-    font-size: 1rem;
-    padding: 10px 0;
-  }
-}
-
-/* Smartphones (small) (up to 480px) */
-@media (max-width: 480px) {
-  #title-section {
-    padding: 50px 8px;
-    min-height: 35vh;
-  }
-
-  #title-div h1.typing-effect {
-    font-size: 1.8rem;
-  }
-
-  #description-title-div h2 {
-    font-size: 1.3rem;
-  }
-
-  #description-div {
-    font-size: 0.95rem;
-    padding: 0 8px;
-  }
-
-  #difficulty {
-    font-size: 0.9rem;
-  }
-
-  #difficulty-select {
-    font-size: 0.9rem;
-    padding: 5px 8px;
-  }
-
-  #score-container {
-    font-size: 1rem;
-  }
-
-  #chrono {
-    font-size: 1.4rem;
-    padding: 7px 10px;
+  footer {
+    font-size: 0.85rem;
+    padding: 20px 10px;
   }
 }
