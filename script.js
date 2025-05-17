@@ -158,28 +158,38 @@ document.addEventListener("DOMContentLoaded", () => {
       "image/cartes_classiques/As.gif",
     ];
 
-    // Définit le nombre de paires selon la difficulté sélectionnée
-    let pairsCount = 10; // Par défaut Normal
-    if (difficultySelect.value === "facile") pairsCount = 8;
-    else if (difficultySelect.value === "difficile") pairsCount = 12;
+    // Nombre de paires selon la difficulté
+let pairsCount;
+let cols, rows;
 
-    // Nombre de colonnes fixes (par exemple 4)
-    let cols = 4;
+if (difficultySelect.value === "facile") {
+  pairsCount = 8; // 16 cartes
+  cols = 4;
+  rows = 4;
+} else if (difficultySelect.value === "normal") {
+  pairsCount = 18; // 36 cartes
+  cols = 6;
+  rows = 6;
+} else if (difficultySelect.value === "difficile") {
+  pairsCount = 21; // 42 cartes
+  cols = 7;
+  rows = 7;
+} else {
+  // fallback normal
+  pairsCount = 18; // 36 cartes
+  cols = 6;
+  rows = 6;
+}
 
-    // --- Nouvelle logique ---
-    // Plus il y a de paires, plus la largeur des colonnes augmente
-    let colWidth;
-    if (pairsCount <= 8) colWidth = "140px";       // Facile : colonnes larges
-    else if (pairsCount <= 10) colWidth = "160px"; // Normal : colonnes moyennes
-    else colWidth = "180px";                        // Difficile : colonnes encore plus larges
+// Largeur des colonnes fixe (modifiable)
+const colWidth = "120px";
 
-    // Application des styles CSS dynamiques pour la grille
-    cardContainer.style.display = "grid";
-    cardContainer.style.gridTemplateColumns = `repeat(${cols}, ${colWidth})`;
+// Application des styles CSS pour la grille
+cardContainer.style.display = "grid";
+cardContainer.style.gridTemplateColumns = `repeat(${cols}, ${colWidth})`;
+cardContainer.style.gridTemplateRows = `repeat(${rows}, ${Math.floor(parseInt(colWidth) * 1.25)}px)`;
+cardContainer.style.gap = "10px";
 
-    // Hauteur des lignes proportionnelle à la largeur (ex: 1.25 fois la largeur)
-    const colWidthNum = parseInt(colWidth);
-    cardContainer.style.gridAutoRows = `${Math.floor(colWidthNum * 1.25)}px`;
 
     // Sélection des images à utiliser
     const selectedImages = cardImages.slice(0, pairsCount);

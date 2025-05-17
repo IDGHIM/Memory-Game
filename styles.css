@@ -252,7 +252,7 @@ h2.typing-effect {
   justify-content: center;
   max-width: 900px;
   margin: 0 auto;
-  /* grid-template-columns et grid-auto-rows seront définis via JS */
+  /* Les dimensions de grille sont définies dynamiquement en JavaScript */
 }
 
 .card {
