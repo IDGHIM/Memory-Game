@@ -26,6 +26,11 @@ a {
   color: inherit;
 }
 
+/* ================== ACCESSIBILITÉ SCROLL ================== */
+section {
+  scroll-margin-top: 80px;
+}
+
 /* ================== NAVIGATION ================== */
 #navbar {
   position: fixed;
@@ -183,24 +188,61 @@ h2.typing-effect {
   align-items: center;
 }
 
-/* ================== JEU ================== */
-#game-section {
-  width: 100%;
-  padding: 60px 20px;
-  background-color: #ffffff;
-  display: flex;
-  justify-content: center;
+/* ================== CHRONO & SCORE ================== */
+#chrono {
+  font-size: 2.2rem;
+  font-weight: 700;
+  color: var(--primary);
+  background: #fef3f3;
+  padding: 12px 25px;
+  border-radius: 12px;
+  border: 2px solid var(--primary);
+  width: fit-content;
+  margin: 20px auto;
+  user-select: none;
+  box-shadow: 0 0 10px rgba(192, 57, 43, 0.3);
 }
 
-#game-div {
-  width: 100%;
-  max-width: 900px;
+#score-container {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  margin-top: 1rem;
+}
+
+#score-container p,
+#score-container input {
+  font-size: 1.2rem;
+}
+
+#score-container input {
+  width: 40px;
   text-align: center;
-  background: var(--light);
-  padding: 20px;
-  border-radius: 8px;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
-  margin: 0 auto;
+  border: 1px solid var(--dark);
+  border-radius: 4px;
+}
+
+/* ================== BOUTON RESET ================== */
+#reset {
+  background-color: var(--primary);
+  color: var(--white);
+  border: none;
+  padding: 10px 20px;
+  font-size: 1.2rem;
+  font-weight: 600;
+  border-radius: 6px;
+  cursor: pointer;
+  box-shadow: 0 4px 8px rgba(192, 57, 43, 0.4);
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
+  margin-top: 20px;
+  user-select: none;
+}
+
+#reset:hover,
+#reset:focus {
+  background-color: #922b24;
+  box-shadow: 0 6px 12px rgba(146, 43, 36, 0.6);
+  outline: none;
 }
 
 /* ================== NIVEAU DE DIFFICULTÉ ================== */
@@ -243,6 +285,27 @@ h2.typing-effect {
   border-color: #922b24;
   box-shadow: 0 0 10px rgba(146, 43, 36, 0.6);
   outline: none;
+}
+
+
+/* ================== JEU ================== */
+#game-section {
+  width: 100%;
+  padding: 60px 20px;
+  background-color: #ffffff;
+  display: flex;
+  justify-content: center;
+}
+
+#game-div {
+  width: 100%;
+  max-width: 900px;
+  text-align: center;
+  background: var(--light);
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+  margin: 0 auto;
 }
 
 /* ================== GRILLE DE CARTES ADAPTATIVE ================== */
@@ -312,40 +375,6 @@ h2.typing-effect {
   border-radius: 4px;
   user-select: none;
   pointer-events: none;
-}
-
-/* ================== CHRONO & SCORE ================== */
-#chrono {
-  font-size: 2.2rem;
-  font-weight: 700;
-  color: var(--primary);
-  background: #fef3f3;
-  padding: 12px 25px;
-  border-radius: 12px;
-  border: 2px solid var(--primary);
-  width: fit-content;
-  margin: 20px auto;
-  user-select: none;
-  box-shadow: 0 0 10px rgba(192, 57, 43, 0.3);
-}
-
-#score-container {
-  display: flex;
-  justify-content: center;
-  gap: 2rem;
-  margin-top: 1rem;
-}
-
-#score-container p,
-#score-container input {
-  font-size: 1.2rem;
-}
-
-#score-container input {
-  width: 40px;
-  text-align: center;
-  border: 1px solid var(--dark);
-  border-radius: 4px;
 }
 
 /* ================== SECTION SCORE ================== */
@@ -445,35 +474,6 @@ footer {
   filter: invert(100%);
   user-select: none;
   pointer-events: none;
-}
-
-
-/* ================== ACCESSIBILITÉ SCROLL ================== */
-section {
-  scroll-margin-top: 80px;
-}
-
-/* ================== BOUTON RESET ================== */
-#reset {
-  background-color: var(--primary);
-  color: var(--white);
-  border: none;
-  padding: 10px 20px;
-  font-size: 1.2rem;
-  font-weight: 600;
-  border-radius: 6px;
-  cursor: pointer;
-  box-shadow: 0 4px 8px rgba(192, 57, 43, 0.4);
-  transition: background-color 0.3s ease, box-shadow 0.3s ease;
-  margin-top: 20px;
-  user-select: none;
-}
-
-#reset:hover,
-#reset:focus {
-  background-color: #922b24;
-  box-shadow: 0 6px 12px rgba(146, 43, 36, 0.6);
-  outline: none;
 }
 
 /* =============== RÉPONSIVE TABLETTES ET SMARTPHONES =============== */
